@@ -22,14 +22,17 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.produceState
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.capitalize
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
-import com.manuelrodriguez.pokedex.Data.ServerPokemon
+import com.manuelrodriguez.pokedex.data.models.PokedexListEntry
+import com.manuelrodriguez.pokedex.data.remote.responses.ServerPokemonResult
 import com.manuelrodriguez.pokedex.ui.PokemonsService
 import com.manuelrodriguez.pokedex.ui.theme.PokedexAppTheme
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.Locale
 
 class MainActivity : ComponentActivity() {
     @OptIn(ExperimentalMaterial3Api::class)
@@ -39,16 +42,28 @@ class MainActivity : ComponentActivity() {
             PokedexAppTheme {
                 // A surface container using the 'background' color from the theme
 
-                val pokemons = produceState<List<ServerPokemon>>(initialValue = emptyList()) {
+                val pokemons = produceState<List<ServerPokemonResult>>(initialValue = emptyList()) {
                     value = Retrofit.Builder()
-                        .baseUrl("https://pokeapi.co/api/v2/")
                         .addConverterFactory(GsonConverterFactory.create())
+                        .baseUrl("https://pokeapi.co/api/v2/")
                         .build()
                         .create(PokemonsService::class.java)
-                        .getPokemons()
+                        .getPokemonList(limit = 151, offset = 0)
                         .results
                 }
 
+                val pokedexEntries = pokemons.value.mapIndexed{ index, entry ->
+                    val number = if (entry.url.endsWith("/")) {
+                        entry.url.dropLast(1).takeLastWhile { it.isDigit() }
+                    } else {
+                        entry.url.takeLastWhile { it.isDigit() }
+                    }
+                    val url = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${number}.png"
+                    PokedexListEntry(entry.name.capitalize(Locale.ROOT), url, number.toInt())
+
+
+
+                }
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
@@ -78,12 +93,14 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun PokemonItem(pokemon: ServerPokemon) {
-    Column {
+fun PokemonItem(pokemon: ServerPokemonResult) {
+    val imageUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.url.takeLastWhile { it.isDigit() }}.png"
+
+        Column {
 
         //Todo: Use AsyncImage to load images, need to look at Api
         AsyncImage(
-            model = pokemon.url, contentDescription = pokemon.name,
+            model = imageUrl, contentDescription = pokemon.name,
             modifier = Modifier
                 .fillMaxWidth()
                 .aspectRatio(2 / 3f)

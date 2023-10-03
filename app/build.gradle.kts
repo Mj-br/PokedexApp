@@ -57,9 +57,13 @@ kapt {
 }
 
 dependencies {
+    val lifecycleVersion = "2.6.2"
+    val composeVersion = "1.4.3"
+    val navVersion = "2.5.3"
+    val retrofitVersion = "2.9.0"
 
     implementation("androidx.core:core-ktx:1.9.0")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion")
     implementation("androidx.activity:activity-compose:1.7.2")
     implementation(platform("androidx.compose:compose-bom:2023.03.00"))
     implementation("androidx.compose.ui:ui")
@@ -75,8 +79,15 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 
+
+    implementation ("androidx.compose.material:material-icons-core:$composeVersion")
+    implementation ("androidx.compose.material:material-icons-extended:$composeVersion")
+    implementation ("androidx.compose.runtime:runtime-livedata:$composeVersion")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycleVersion")
+
+    implementation("androidx.navigation:navigation-compose:$navVersion")
+
     //Retrofit
-    val retrofitVersion = "2.9.0"
     implementation ("com.squareup.retrofit2:retrofit:$retrofitVersion")
     implementation ("com.squareup.retrofit2:converter-gson:$retrofitVersion")
     implementation ("com.squareup.okhttp3:okhttp:4.9.0")
@@ -92,7 +103,5 @@ dependencies {
     implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
     kapt ("androidx.hilt:hilt-compiler:1.0.0")
 
-
-
-
+    implementation("androidx.palette:palette-ktx:1.0.0")
 }

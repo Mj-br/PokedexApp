@@ -52,7 +52,7 @@ class MainActivity : ComponentActivity() {
                         .results
                 }
 
-                val pokedexEntries = pokemons.value.mapIndexed{ index, entry ->
+                /*val pokedexEntries = pokemons.value.mapIndexed{ index, entry ->
                     val number = if (entry.url.endsWith("/")) {
                         entry.url.dropLast(1).takeLastWhile { it.isDigit() }
                     } else {
@@ -61,9 +61,8 @@ class MainActivity : ComponentActivity() {
                     val url = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${number}.png"
                     PokedexListEntry(entry.name.capitalize(Locale.ROOT), url, number.toInt())
 
+                }*/
 
-
-                }
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background

@@ -9,14 +9,16 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.manuelrodriguez.pokedex.data.remote.responses.ServerPokemonResult
 import com.manuelrodriguez.pokedex.ui.PokemonsService
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class MainViewModel : ViewModel() {
 
-    private val _state = MutableLiveData(UiState())
-    var state: LiveData<UiState> = _state
+    private val _state = MutableStateFlow(UiState())
+    var state: StateFlow<UiState> = _state
     init {
         viewModelScope.launch {
             _state.value = UiState(Retrofit.Builder()

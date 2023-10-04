@@ -21,6 +21,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.produceState
@@ -43,7 +44,7 @@ class MainActivity : ComponentActivity() {
             PokedexAppTheme {
 
                 val viewModel: MainViewModel = viewModel()
-                val state by viewModel.state.observeAsState(MainViewModel.UiState())
+                val state by viewModel.state.collectAsState()
 
                 Surface(
                     modifier = Modifier.fillMaxSize(),

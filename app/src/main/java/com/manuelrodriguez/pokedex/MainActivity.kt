@@ -22,17 +22,14 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.produceState
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.capitalize
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
-import com.manuelrodriguez.pokedex.data.models.PokedexListEntry
 import com.manuelrodriguez.pokedex.data.remote.responses.ServerPokemonResult
 import com.manuelrodriguez.pokedex.ui.PokemonsService
 import com.manuelrodriguez.pokedex.ui.theme.PokedexAppTheme
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.util.Locale
 
 class MainActivity : ComponentActivity() {
     @OptIn(ExperimentalMaterial3Api::class)
@@ -93,6 +90,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun PokemonItem(pokemon: ServerPokemonResult) {
+
     val imageUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.url.takeLastWhile { it.isDigit() }}.png"
 
         Column {

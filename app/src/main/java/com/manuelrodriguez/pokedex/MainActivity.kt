@@ -49,17 +49,6 @@ class MainActivity : ComponentActivity() {
                         .results
                 }
 
-                /*val pokedexEntries = pokemons.value.mapIndexed{ index, entry ->
-                    val number = if (entry.url.endsWith("/")) {
-                        entry.url.dropLast(1).takeLastWhile { it.isDigit() }
-                    } else {
-                        entry.url.takeLastWhile { it.isDigit() }
-                    }
-                    val url = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${number}.png"
-                    PokedexListEntry(entry.name.capitalize(Locale.ROOT), url, number.toInt())
-
-                }*/
-
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
@@ -90,12 +79,14 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun PokemonItem(pokemon: ServerPokemonResult) {
+    val number = if (pokemon.url.endsWith("/")) {
+        pokemon.url.dropLast(1).takeLastWhile { it.isDigit() }
+    } else {
+        pokemon.url.takeLastWhile { it.isDigit() }
+    }
+    val imageUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/$number.png"
 
-    val imageUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.url.takeLastWhile { it.isDigit() }}.png"
-
-        Column {
-
-        //Todo: Use AsyncImage to load images, need to look at Api
+    Column {
         AsyncImage(
             model = imageUrl, contentDescription = pokemon.name,
             modifier = Modifier
@@ -107,9 +98,9 @@ fun PokemonItem(pokemon: ServerPokemonResult) {
             modifier = Modifier.padding(16.dp),
             maxLines = 1
         )
-
     }
 }
+
 
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {

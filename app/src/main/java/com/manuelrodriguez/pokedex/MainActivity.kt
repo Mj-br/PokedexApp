@@ -75,7 +75,8 @@ class MainActivity : ComponentActivity() {
 
                                     PokemonItem(
                                         pokemon = pokemon,
-                                        onClick = { viewModel.onPokemonClick(pokemon) })
+                                        onClick = { viewModel.onPokemonClick(pokemon) }
+                                    )
                                 }
                             }
                         }

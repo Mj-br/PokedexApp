@@ -13,22 +13,24 @@ import retrofit2.converter.gson.GsonConverterFactory
 class PokemonListViewModel : ViewModel() {
 
     private val _state = MutableStateFlow(UiState())
-    var state: StateFlow<UiState> = _state
-
+    val state: StateFlow<UiState> = _state
 
     init {
         viewModelScope.launch {
             _state.value = UiState(loading = true)
             _state.value = UiState(
-                loading = false,
                 pokemonList = Retrofit.Builder()
                     .addConverterFactory(GsonConverterFactory.create())
                     .baseUrl("https://pokeapi.co/api/v2/")
                     .build()
                     .create(PokemonsService::class.java)
                     .getPokemonList(limit = 151, offset = 0)
-                    .results
+                    .results,
+                loading = false
+
+
             )
+
         }
 
     }

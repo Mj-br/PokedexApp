@@ -61,6 +61,7 @@ dependencies {
     val composeVersion = "1.4.3"
     val navVersion = "2.5.3"
     val retrofitVersion = "2.9.0"
+    val roomVersion = "2.5.0"
 
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion")
@@ -102,6 +103,12 @@ dependencies {
     kapt("com.google.dagger:hilt-android-compiler:2.44")
     implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
     kapt ("androidx.hilt:hilt-compiler:1.0.0")
+
+    //Room
+    implementation("androidx.room:room-runtime:$roomVersion")
+    annotationProcessor("androidx.room:room-compiler:$roomVersion")
+    kapt("androidx.room:room-compiler:$roomVersion")
+    implementation("androidx.room:room-ktx:$roomVersion")
 
     implementation("androidx.palette:palette-ktx:1.0.0")
 }

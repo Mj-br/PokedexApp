@@ -15,6 +15,7 @@ class PokemonListViewModel : ViewModel() {
     private val _state = MutableStateFlow(UiState())
     var state: StateFlow<UiState> = _state
 
+
     init {
         viewModelScope.launch {
             _state.value = UiState(loading = true)

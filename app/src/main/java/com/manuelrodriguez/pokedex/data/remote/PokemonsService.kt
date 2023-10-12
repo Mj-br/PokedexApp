@@ -1,4 +1,4 @@
-package com.manuelrodriguez.pokedex.ui
+package com.manuelrodriguez.pokedex.data.remote
 
 import com.manuelrodriguez.pokedex.data.remote.responses.Pokemon
 import com.manuelrodriguez.pokedex.data.remote.responses.PokemonList

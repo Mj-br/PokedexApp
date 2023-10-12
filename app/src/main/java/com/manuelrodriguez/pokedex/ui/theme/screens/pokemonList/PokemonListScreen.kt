@@ -1,4 +1,4 @@
-package com.manuelrodriguez.pokedex.ui.theme.screens.PokemonList
+package com.manuelrodriguez.pokedex.ui.theme.screens.pokemonList
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -33,15 +33,15 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.AsyncImage
 import com.manuelrodriguez.pokedex.data.local.PokedexListEntryDao
 import com.manuelrodriguez.pokedex.data.models.PokemonList
-import com.manuelrodriguez.pokedex.data.remote.responses.ServerPokemonResult
+import com.manuelrodriguez.pokedex.data.repositories.PokemonListRepository
 import com.manuelrodriguez.pokedex.ui.theme.PokedexAppTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PokemonListScreen(pokedexListEntryDao: PokedexListEntryDao) {
+fun PokemonListScreen(pokemonListRepository: PokemonListRepository) {
     PokedexAppTheme {
 
-        val viewModel: PokemonListViewModel = viewModel{ PokemonListViewModel(pokedexListEntryDao)}
+        val viewModel: PokemonListViewModel = viewModel{ PokemonListViewModel(pokemonListRepository)}
         val state by viewModel.state.collectAsState()
 
         Surface(

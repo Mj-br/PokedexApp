@@ -1,5 +1,5 @@
 package com.manuelrodriguez.pokedex.data.local
-import com.manuelrodriguez.pokedex.data.models.PokemonList
+import com.manuelrodriguez.pokedex.domain.models.PokemonList
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 

@@ -1,7 +1,7 @@
 package com.manuelrodriguez.pokedex.data.remote.responses
 
 import com.manuelrodriguez.pokedex.data.local.LocalPokedexEntryList
-import com.manuelrodriguez.pokedex.data.models.PokemonList
+import com.manuelrodriguez.pokedex.domain.models.PokemonList
 
 data class ServerPokemonResult(
     val name: String,

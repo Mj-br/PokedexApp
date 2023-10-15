@@ -1,7 +1,7 @@
 package com.manuelrodriguez.pokedex.data.repositories
 
 import com.manuelrodriguez.pokedex.data.local.LocalDataSource
-import com.manuelrodriguez.pokedex.data.models.PokemonList
+import com.manuelrodriguez.pokedex.domain.models.PokemonList
 import com.manuelrodriguez.pokedex.data.remote.RemoteDatasource
 import kotlinx.coroutines.flow.Flow
 

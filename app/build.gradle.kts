@@ -110,5 +110,8 @@ dependencies {
     kapt("androidx.room:room-compiler:$roomVersion")
     implementation("androidx.room:room-ktx:$roomVersion")
 
+    // Timber
+    implementation ("com.jakewharton.timber:timber:4.7.1")
+
     implementation("androidx.palette:palette-ktx:1.0.0")
 }

@@ -1,4 +1,4 @@
-package com.manuelrodriguez.pokedex.data.models
+package com.manuelrodriguez.pokedex.domain.models
 
 import androidx.room.Entity
 

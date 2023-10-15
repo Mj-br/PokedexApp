@@ -1,6 +1,6 @@
 package com.manuelrodriguez.pokedex.data.remote
 
-import com.manuelrodriguez.pokedex.data.models.PokemonList
+import com.manuelrodriguez.pokedex.domain.models.PokemonList
 import com.manuelrodriguez.pokedex.data.remote.responses.toPokedexEntryList
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

@@ -31,16 +31,21 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.AsyncImage
-import com.manuelrodriguez.pokedex.data.models.PokemonList
+import com.manuelrodriguez.pokedex.domain.models.PokemonList
 import com.manuelrodriguez.pokedex.data.repositories.PokemonListRepository
+import com.manuelrodriguez.pokedex.domain.useCases.CollectPokemonListUseCase
+import com.manuelrodriguez.pokedex.domain.useCases.RequestPokemonListUseCase
+import com.manuelrodriguez.pokedex.domain.useCases.UpdatePokemonListUseCase
 import com.manuelrodriguez.pokedex.ui.theme.PokedexAppTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PokemonListScreen(pokemonListRepository: PokemonListRepository) {
+fun PokemonListScreen(collectPokemonListUseCase: CollectPokemonListUseCase,
+    requestPokemonListUseCase: RequestPokemonListUseCase,
+    updatePokemonListUseCase: UpdatePokemonListUseCase) {
     PokedexAppTheme {
 
-        val viewModel: PokemonListViewModel = viewModel{ PokemonListViewModel(pokemonListRepository)}
+        val viewModel: PokemonListViewModel = viewModel{ PokemonListViewModel(collectPokemonListUseCase, requestPokemonListUseCase, updatePokemonListUseCase) }
         val state by viewModel.state.collectAsState()
 
         Surface(

@@ -30,9 +30,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
 import com.manuelrodriguez.pokedex.domain.models.PokemonList
-import com.manuelrodriguez.pokedex.data.repositories.PokemonListRepository
 import com.manuelrodriguez.pokedex.domain.useCases.CollectPokemonListUseCase
 import com.manuelrodriguez.pokedex.domain.useCases.RequestPokemonListUseCase
 import com.manuelrodriguez.pokedex.domain.useCases.UpdatePokemonListUseCase
@@ -40,9 +40,12 @@ import com.manuelrodriguez.pokedex.ui.theme.PokedexAppTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PokemonListScreen(collectPokemonListUseCase: CollectPokemonListUseCase,
+fun PokemonListScreen(
+    navController: NavHostController,
+    collectPokemonListUseCase: CollectPokemonListUseCase,
     requestPokemonListUseCase: RequestPokemonListUseCase,
-    updatePokemonListUseCase: UpdatePokemonListUseCase) {
+    updatePokemonListUseCase: UpdatePokemonListUseCase
+) {
     PokedexAppTheme {
 
         val viewModel: PokemonListViewModel = viewModel{ PokemonListViewModel(collectPokemonListUseCase, requestPokemonListUseCase, updatePokemonListUseCase) }

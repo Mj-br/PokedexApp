@@ -1,6 +1,6 @@
 package com.manuelrodriguez.pokedex.ui.theme.screens.pokemonList
 
-import com.manuelrodriguez.pokedex.domain.models.PokemonList
+import com.manuelrodriguez.pokedex.data.local.model.PokemonList
 
 data class PokemonListUiState(
         val loading: Boolean = false,

@@ -14,7 +14,8 @@ import androidx.room.Room
 import com.manuelrodriguez.pokedex.data.local.LocalDataSource
 import com.manuelrodriguez.pokedex.data.local.PokedexListEntryDatabase
 import com.manuelrodriguez.pokedex.data.remote.RemoteDatasource
-import com.manuelrodriguez.pokedex.data.repositories.PokemonListRepository
+import com.manuelrodriguez.pokedex.di.AppModule.providePokemonServiceApi
+import com.manuelrodriguez.pokedex.repository.PokemonRepository
 import com.manuelrodriguez.pokedex.domain.useCases.CollectPokemonListUseCase
 import com.manuelrodriguez.pokedex.domain.useCases.RequestPokemonListUseCase
 import com.manuelrodriguez.pokedex.domain.useCases.UpdatePokemonListUseCase
@@ -29,15 +30,17 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        val api = providePokemonServiceApi()
+
         db = Room.databaseBuilder(
             applicationContext,
             PokedexListEntryDatabase::class.java,
             "Pokedex-db"
         ).build()
 
-        val repository = PokemonListRepository(
+        val repository = PokemonRepository(
             localDataSource = LocalDataSource(db.pokedexListEntryDao()),
-            remoteDatasource = RemoteDatasource()
+            remoteDatasource = RemoteDatasource(api)
         )
 
         setContent {

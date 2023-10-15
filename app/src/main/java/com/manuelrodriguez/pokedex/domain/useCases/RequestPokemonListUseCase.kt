@@ -1,8 +1,8 @@
 package com.manuelrodriguez.pokedex.domain.useCases
 
-import com.manuelrodriguez.pokedex.data.repositories.PokemonListRepository
+import com.manuelrodriguez.pokedex.repository.PokemonRepository
 
-class RequestPokemonListUseCase(private val repository: PokemonListRepository) {
+class RequestPokemonListUseCase(private val repository: PokemonRepository) {
     suspend operator fun invoke() = repository.requestPokemonList()
 }
 

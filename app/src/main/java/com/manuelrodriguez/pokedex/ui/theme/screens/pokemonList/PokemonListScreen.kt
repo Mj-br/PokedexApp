@@ -32,7 +32,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
-import com.manuelrodriguez.pokedex.domain.models.PokemonList
+import com.manuelrodriguez.pokedex.data.local.model.PokemonList
 import com.manuelrodriguez.pokedex.domain.useCases.CollectPokemonListUseCase
 import com.manuelrodriguez.pokedex.domain.useCases.RequestPokemonListUseCase
 import com.manuelrodriguez.pokedex.domain.useCases.UpdatePokemonListUseCase

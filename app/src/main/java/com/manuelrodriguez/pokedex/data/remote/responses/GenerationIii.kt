@@ -1,7 +1,9 @@
 package com.manuelrodriguez.pokedex.data.remote.responses
 
+import com.google.gson.annotations.SerializedName
+
 data class GenerationIii(
     val emerald: Emerald,
-    val fireredLeafgreen: FireredLeafgreen,
-    val rubySapphire: RubySapphire
+    @SerializedName("firered-leafgreen") val fireredLeafgreen: FireredLeafgreen,
+    @SerializedName("ruby-sapphire") val rubySapphire: RubySapphire
 )

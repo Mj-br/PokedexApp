@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface PokedexListEntryDao {
     @Query("SELECT * FROM LocalPokedexEntryList")
-    fun getPokedexList(): Flow<List<LocalPokedexEntryList>>
+    fun getPokemonList(): Flow<List<LocalPokedexEntryList>>
 
     @Insert
     suspend fun insertAll(pokedexEntryList: List<LocalPokedexEntryList>)

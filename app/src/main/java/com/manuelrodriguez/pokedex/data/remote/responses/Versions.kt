@@ -1,11 +1,14 @@
 package com.manuelrodriguez.pokedex.data.remote.responses
 
+import com.google.gson.annotations.SerializedName
+
 data class Versions(
-    val generationI: GenerationI,
-    val generationIi: GenerationIi,
-    val generationIii: GenerationIii,
-    val generationIv: GenerationIv,
-    val generationV: GenerationV,
-    val generationVi: GenerationVi,
-    val generationVii: GenerationVii
+    @SerializedName("generation-i") val generationI: GenerationI,
+    @SerializedName("generation-ii") val generationIi: GenerationIi,
+    @SerializedName("generation-iii") val generationIii: GenerationIii,
+    @SerializedName("generation-iv") val generationIv: GenerationIv,
+    @SerializedName("generation-v") val generationV: GenerationV,
+    @SerializedName("generation-vi") val generationVi: GenerationVi,
+    @SerializedName("generation-vii") val generationVii: GenerationVii,
+    @SerializedName("generation-viii") val generationViii: GenerationViii
 )

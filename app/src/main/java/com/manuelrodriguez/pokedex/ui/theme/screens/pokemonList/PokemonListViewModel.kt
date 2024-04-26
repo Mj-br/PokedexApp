@@ -3,7 +3,6 @@ package com.manuelrodriguez.pokedex.ui.theme.screens.pokemonList
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.manuelrodriguez.pokedex.domain.models.PokemonList
-import com.manuelrodriguez.pokedex.data.repositories.PokemonListRepository
 import com.manuelrodriguez.pokedex.domain.useCases.CollectPokemonListUseCase
 import com.manuelrodriguez.pokedex.domain.useCases.RequestPokemonListUseCase
 import com.manuelrodriguez.pokedex.domain.useCases.UpdatePokemonListUseCase

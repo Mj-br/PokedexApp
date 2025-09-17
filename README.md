@@ -23,19 +23,6 @@
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
 
-<!-- PROJECT LOGO -->
-<br />
-<div align="center">
-  <a href="https://github.com/timacostadev/PokeArch/">
-    <img src="previews/github_logo.png" alt="Logo">
-  </a>
-
-<h3 align="center">PokeArch</h3>
-
-</div>
-
-
-
 <!-- TABLE OF CONTENTS -->
 <details>
   <summary>Table of Contents</summary>
